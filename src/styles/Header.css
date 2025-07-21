@@ -1,0 +1,33 @@
+.app-header {
+    background-color: #111827;
+    padding: 1rem 2rem;
+    color: white;
+    border-radius: 30px;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo a {
+    color: #f6f6f6;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-size: 1rem;
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-links a:hover {
+    color: #60a5fa;
+}

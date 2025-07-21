@@ -1,0 +1,60 @@
+Project Folder structure:
+nvidia-earnings-ai/
+├── public/
+│   ├── logo.png
+│   └── transcripts/             # Optional: use for prebuilt JSON files (publicly accessible)
+│       └── Q2-2025.json
+│
+├── src/
+│   ├── assets/                  # Images, icons, Lottie files, etc.
+│   │   └── logo.svg
+│   │
+│   ├── components/              # Reusable visual blocks
+│   │   ├── Header.jsx
+│   │   ├── Footer.jsx
+│   │   ├── QuarterCard.jsx
+│   │   ├── TranscriptViewer.jsx
+│   │   ├── SentimentChart.jsx
+│   │   ├── FocusThemes.jsx
+│   │   └── InsightsPanel.jsx
+│   │
+│   ├── pages/                   # React Router views
+│   │   ├── Home.jsx
+│   │   ├── QuarterDetails.jsx
+│   │   └── About.jsx
+│   │
+│   ├── data/                    # Transcripts, metadata
+│   │   ├── transcripts/
+│   │   │   ├── Q2-2025.json
+│   │   │   ├── Q1-2025.json
+│   │   └── metadata.js          # Quarter list, company info
+│   │
+│   ├── lib/                     # AI/NLP logic
+│   │   ├── sentiment.js         # Sentiment analysis helpers
+│   │   ├── themeExtractor.js    # Strategic focus extraction
+│   │   └── compareTone.js       # QoQ tone difference logic
+│   │
+│   ├── constants/               # Enum-like config values
+│   │   └── sentiments.js
+│   │
+│   ├── styles/                  # Tailwind + custom CSS
+│   │   └── index.css
+│   │
+│   ├── router.jsx               # All app routes in one place
+│   ├── App.jsx                  # Main app layout
+│   └── main.jsx                 # ReactDOM entry point
+│
+├── scraper/                     # Backend scripts (Node.js)
+│   ├── audio/                   # Downloaded MP3s
+│   ├── transcripts/             # Generated JSON transcripts
+│   ├── downloader.js            # Puppeteer script to grab MP3
+│   ├── transcribe.js            # Whisper transcription script
+│   └── run-all.js               # Orchestrator for download + transcribe
+│
+├── .env                         # OpenAI API key
+├── .gitignore
+├── index.html
+├── vite.config.js
+├── tailwind.config.js
+├── package.json
+├── README.md

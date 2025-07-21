@@ -1,0 +1,13 @@
+.focus-themes {
+    margin-top: 1rem;
+}
+
+.theme-tag {
+    display: inline-block;
+    background-color: #e5f3ff;
+    color: #0366d6;
+    padding: 0.4rem 0.8rem;
+    margin: 0.3rem;
+    border-radius: 16px;
+    font-size: 0.9rem;
+}

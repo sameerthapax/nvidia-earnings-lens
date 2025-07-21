@@ -1,0 +1,25 @@
+.quarter-details {
+    padding: 2rem;
+    font-family: sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.details-layout {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.transcript-column {
+    flex: 2;
+    max-height: 600px;
+    overflow-y: auto;
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.insights-column {
+    flex: 1;
+}
