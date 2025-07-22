@@ -6,7 +6,6 @@ dotenv.config();
 // Initialize Firebase once
 if (!getApps().length) {
     const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_KEY);
-    console.log(serviceAccount);
     initializeApp({
         credential: cert(serviceAccount),
     });
@@ -14,7 +13,7 @@ if (!getApps().length) {
 
 const db = getFirestore();
 
-export async function scrapeAndSaveToFirestore(n = 5) {
+export async function scrapeAndSaveToFirestore(n = 4) {
     const quarters = getLastNQuarters(12);
     let saved = 0;
 

@@ -1,8 +1,11 @@
+// src/components/Header.jsx
 import React from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/Header.css'; // custom styles
+import { Link, useLocation } from 'react-router-dom';
+import '../styles/Header.css';
 
 const Header = () => {
+    const location = useLocation();
+
     return (
         <header className="app-header">
             <div className="header-content">
@@ -10,12 +13,19 @@ const Header = () => {
                     <Link to="/">NVIDIA Earnings AI</Link>
                 </h1>
                 <nav className="nav-links">
-                    <Link to="/">Home</Link>
-                    <Link to="/about">About</Link>
+                    <NavLinkBubble to="/" label="Home" active={location.pathname === '/'} />
+                    <NavLinkBubble to="/about" label="About" active={location.pathname === '/about'} />
                 </nav>
             </div>
         </header>
     );
 };
+
+const NavLinkBubble = ({ to, label, active }) => (
+    <Link to={to} className={`nav-link ${active ? 'active' : ''}`}>
+        {label}
+        {active && <span className="bubble" />}
+    </Link>
+);
 
 export default Header;

@@ -1,20 +1,81 @@
-.scrape-button {
-    margin-top: 1rem;
-    padding: 0.5rem 1.5rem;
-    background-color: #0070f3;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
+.quarter-details {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.scrape-button:disabled {
-    background-color: #999;
-    cursor: not-allowed;
+.quarter-details h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
-.scrape-status {
-    margin-top: 0.5rem;
-    font-weight: 500;
+.details-layout {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+/* Left: Transcript */
+.transcript-column {
+    flex: 2;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Right: Insights */
+.insights-column {
+    flex: 1.5;
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Sentiment */
+.sentiment-section {
+    margin-bottom: 1.5rem;
+}
+
+.sentiment-section h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+/* Tone Change */
+.tone-change-box {
+    background-color: #f1f5ff;
+    border-left: 4px solid #4a90e2;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+}
+
+.tone-change-box h3 {
+    margin-top: 0;
+}
+
+/* Themes */
+.themes-section {
+    background-color: #fef9f2;
+    border-left: 4px solid #ffa500;
+    padding: 1rem;
+    border-radius: 6px;
+}
+
+.themes-section h3 {
+    margin-top: 0;
+}
+
+.themes-section ul {
+    padding-left: 1.25rem;
+}
+
+.themes-section li {
+    margin-bottom: 0.5rem;
 }

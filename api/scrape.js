@@ -1,5 +1,5 @@
 // api/scrape.js
-import { scrapeAndSaveToFirestore } from "../../../utils/scraperHandler.js";
+import { scrapeAndSaveToFirestore } from "../utils/scraperHandler.js";
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {

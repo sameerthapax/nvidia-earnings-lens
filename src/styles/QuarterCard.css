@@ -7,7 +7,22 @@
     background-color: #f9f9f9;
     transition: box-shadow 0.2s;
 }
+.sentiment {
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
 
+.sentiment.positive {
+    color: green;
+}
+
+.sentiment.neutral {
+    color: gray;
+}
+
+.sentiment.negative {
+    color: red;
+}
 .quarter-card:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
