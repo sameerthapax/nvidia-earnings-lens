@@ -1,25 +1,20 @@
-.quarter-details {
-    padding: 2rem;
-    font-family: sans-serif;
-    max-width: 1200px;
-    margin: 0 auto;
+.scrape-button {
+    margin-top: 1rem;
+    padding: 0.5rem 1.5rem;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.details-layout {
-    display: flex;
-    gap: 2rem;
-    margin-top: 2rem;
+.scrape-button:disabled {
+    background-color: #999;
+    cursor: not-allowed;
 }
 
-.transcript-column {
-    flex: 2;
-    max-height: 600px;
-    overflow-y: auto;
-    background: #f9f9f9;
-    padding: 1rem;
-    border-radius: 8px;
-}
-
-.insights-column {
-    flex: 1;
+.scrape-status {
+    margin-top: 0.5rem;
+    font-weight: 500;
 }
