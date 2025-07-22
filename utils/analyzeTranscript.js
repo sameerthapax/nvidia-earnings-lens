@@ -3,7 +3,7 @@ import OpenAI from 'openai';
 import { config } from 'dotenv';
 config();
 
-const openai = new OpenAI({ apiKey: process.env.VITE_OPENAI_API_KEY });
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const SYSTEM_PROMPT = `
 You are a financial analyst assistant specializing in earnings calls.
