@@ -15,7 +15,7 @@ const About = () => {
             <ul>
                 <li>🔍 Automatic transcript parsing and multi-part summarization</li>
                 <li>📈 Sentiment analysis on both prepared remarks and Q&A sessions</li>
-                <li>📊 Tone change tracking across quarters to detect executive mood shifts</li>
+                <li>📊 Tone change tracking across quarter to detect executive mood shifts</li>
                 <li>🧠 Strategic focus extraction using large language models</li>
                 <li>💬 Interactive Chatbox for asking questions about any quarter's transcript</li>
                 <li>🔎 Vector search powered by OpenAI embeddings for accurate context retrieval</li>
@@ -26,8 +26,9 @@ const About = () => {
                 <li>React + Vite for frontend UI</li>
                 <li>Firebase Firestore for data storage</li>
                 <li>OpenAI GPT-4 & Embeddings API for NLP and chat</li>
-                <li>Puppeteer + Whisper for automated audio-to-text transcription</li>
                 <li>Chart.js for visualization of sentiment trends</li>
+                <li>Transcript retrival from -(https://tickertrends.io/transcripts/)</li>
+                <li>Vercel for deployment.</li>
             </ul>
 
             <h2>🧠 AI Capabilities</h2>
@@ -40,8 +41,8 @@ const About = () => {
 
             <h2>📂 Data Pipeline</h2>
             <p>
-                1. Raw audio files are scraped from NVIDIA’s investor relations page.<br />
-                2. Whisper converts audio into structured text.<br />
+                1. Raw transcripts  are scraped from tickertrends.<br />
+                2. Safely stored in firestore the with analyze button, is set for analysis for the transcript.<br />
                 3. Transcripts are chunked, summarized, embedded, and stored in Firestore under:
             </p>
             <pre>
