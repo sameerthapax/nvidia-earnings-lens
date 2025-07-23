@@ -1,5 +1,6 @@
 // src/components/AnalyzeButton.jsx
 import React, { useState } from 'react';
+import '../styles/AnalyzeButton.css'; // import custom styles
 
 const AnalyzeButton = ({ quarterId, onComplete }) => {
     const [loading, setLoading] = useState(false);
@@ -19,7 +20,7 @@ const AnalyzeButton = ({ quarterId, onComplete }) => {
 
             if (res.ok) {
                 setMessage(`✅ ${json.message}`);
-                if (onComplete) onComplete(); // Refresh data
+                if (onComplete) onComplete();
             } else {
                 setMessage(`❌ Error: ${json.error}`);
             }
@@ -31,11 +32,15 @@ const AnalyzeButton = ({ quarterId, onComplete }) => {
     };
 
     return (
-        <div style={{ marginTop: '0.5rem' }}>
-            <button onClick={handleAnalyze} disabled={loading}>
+        <div className="analyze-wrapper">
+            <button
+                className="analyze-button"
+                onClick={handleAnalyze}
+                disabled={loading}
+            >
                 {loading ? 'Analyzing...' : '🧠 Analyze Transcript'}
             </button>
-            {message && <p style={{ fontSize: '0.85rem', marginTop: '0.25rem' }}>{message}</p>}
+            {message && <p className="analyze-message">{message}</p>}
         </div>
     );
 };

@@ -1,4 +1,3 @@
-// utils/analyzeTranscript.js
 import OpenAI from 'openai';
 import { config } from 'dotenv';
 config();
@@ -14,10 +13,9 @@ Summarize the following transcript and extract these insights in JSON:
   "qaSentiment": "POSITIVE" | "NEGATIVE" | "NEUTRAL",
   "toneChange": string,
   "strategicFocuses": string[]
-}
-`;
+}`;
 
-function chunkTranscript(text, maxLength = 12000) {
+export function chunkTranscript(text, maxLength = 1200) {
     const chunks = [];
     let current = '';
     for (const paragraph of text.split('\n')) {
@@ -31,6 +29,14 @@ function chunkTranscript(text, maxLength = 12000) {
     return chunks;
 }
 
+async function getEmbeddings(text) {
+    const response = await openai.embeddings.create({
+        model: 'text-embedding-3-small',
+        input: text
+    });
+    return response.data[0].embedding;
+}
+
 export async function extractInsightsFromTranscript(transcriptInput) {
     const transcriptText = Array.isArray(transcriptInput)
         ? transcriptInput.join('\n')
@@ -42,10 +48,11 @@ export async function extractInsightsFromTranscript(transcriptInput) {
 
     const chunks = chunkTranscript(transcriptText);
     const summaries = [];
+    const embeddings = [];
 
     for (let i = 0; i < chunks.length; i++) {
         try {
-            const res = await openai.chat.completions.create({
+            const summaryRes = await openai.chat.completions.create({
                 model: 'gpt-3.5-turbo-0125',
                 messages: [
                     { role: 'system', content: SYSTEM_PROMPT },
@@ -53,8 +60,11 @@ export async function extractInsightsFromTranscript(transcriptInput) {
                 ],
                 temperature: 0.3,
             });
-            summaries.push(res.choices[0].message.content);
+            summaries.push(summaryRes.choices[0].message.content);
             console.log(`✅ Summarized chunk ${i + 1}`);
+
+            const embedding = await getEmbeddings(chunks[i]);
+            embeddings.push({ text: chunks[i], embedding });
         } catch (err) {
             console.error(`❌ Failed on chunk ${i + 1}:`, err.message);
         }
@@ -84,7 +94,10 @@ ${summaries.join('\n\n')}
     const raw = finalRes.choices[0].message.content;
     try {
         const parsed = JSON.parse(raw);
-        return parsed;
+        return {
+            insights: parsed,
+            chunksWithEmbeddings: embeddings
+        };
     } catch (err) {
         console.error('❌ Could not parse final JSON:', err.message);
         console.log('Raw response:\n', raw);

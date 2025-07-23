@@ -20,11 +20,11 @@
 /* Left: Transcript */
 .transcript-column {
     flex: 2;
-    background-color: #f9f9f9;
+    background-color: #e7e7e7;
     padding: 1rem;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    max-height: 80vh;
+    height: 120vh;
     overflow-y: auto;
 }
 
@@ -78,4 +78,14 @@
 
 .themes-section li {
     margin-bottom: 0.5rem;
+}
+.chat-box {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #fdfdfd;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.07);
+    height: 40vh;
+    display: flex;
+    overflow-y: hidden;
 }

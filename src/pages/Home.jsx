@@ -24,26 +24,40 @@ const sentimentToScore = {
 };
 
 const Home = () => {
-    const [data, setData] = useState([]);
+    const [data1, setData1] = useState([]);
+    const [data2, setData2] = useState([]);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchAnalyzedData = async () => {
             const snapshot = await getDocs(collection(db, 'analyzedData'));
+            const snapshot2 = await getDocs(collection(db, 'transcripts'));
+
             const parsed = snapshot.docs.map(doc => ({
                 ...doc.data(),
                 quarter: doc.id
             }));
+            const parsed2 = snapshot2.docs.map(doc => ({
+                ...doc.data(),
+                quarter: doc.id
+            }));
+
             parsed.sort((a, b) => (b.quarter < a.quarter ? 1 : -1));
-            setData(parsed);
+            parsed2.sort((a, b) => (b.quarter < a.quarter ? 1 : -1));
+
+            setData1(parsed);
+            setData2(parsed2);
+            setLoading(false);
         };
 
         fetchAnalyzedData();
     }, []);
 
-    const labels = data.map(item => item.quarter);
-    const managementData = data.map(item => sentimentToScore[item.sentiment?.management || 'NEUTRAL']);
-    const qaData = data.map(item => sentimentToScore[item.sentiment?.qa || 'NEUTRAL']);
+    const labels = data1.map(item => item.quarter);
+    const managementData = data1.map(item => sentimentToScore[item.sentiment?.management || 'NEUTRAL']);
+    console.log(managementData);
+    const qaData = data1.map(item => sentimentToScore[item.sentiment?.qa || 'NEUTRAL']);
 
     const generateChartOptions = (titleText, color) => ({
         responsive: true,
@@ -82,6 +96,7 @@ const Home = () => {
             }
         }
     });
+    if (loading) return <p style={{ textAlign: 'center' }}>📊 Loading insights...</p>;
 
     return (
         <div className="home-page">
@@ -124,7 +139,7 @@ const Home = () => {
             <div className="quarter-section">
                 <h2 className="section-title">Quarter Summaries</h2>
                 <div className="quarter-grid">
-                    {data.map((item, index) => (
+                    {data1.map((item, index) => (
                         <QuarterCard
                             key={index}
                             quarter={item.quarter}
