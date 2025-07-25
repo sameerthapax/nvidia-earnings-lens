@@ -56,7 +56,6 @@ const Home = () => {
 
     const labels = data1.map(item => item.quarter);
     const managementData = data1.map(item => sentimentToScore[item.sentiment?.management || 'NEUTRAL']);
-    console.log(managementData);
     const qaData = data1.map(item => sentimentToScore[item.sentiment?.qa || 'NEUTRAL']);
 
     const generateChartOptions = (titleText, color) => ({
