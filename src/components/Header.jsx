@@ -5,16 +5,18 @@ import '../styles/Header.css';
 
 const Header = () => {
     const location = useLocation();
+    const isLibraryActive = location.pathname === '/' || location.pathname.startsWith('/quarter/');
 
     return (
         <header className="app-header">
             <div className="header-content">
-                <h1 className="logo">
-                    <Link to="/">NVIDIA Earnings AI</Link>
-                </h1>
+                <Link to="/" className="brand-mark">
+                    <span className="brand-mark__eyebrow">Research Desk</span>
+                    <span className="brand-mark__title">NVIDIA Earnings Lens</span>
+                </Link>
                 <nav className="nav-links">
-                    <NavLinkBubble to="/" label="Home" active={location.pathname === '/'} />
-                    <NavLinkBubble to="/about" label="About" active={location.pathname === '/about'} />
+                    <NavLinkBubble to="/" label="Library" active={isLibraryActive} />
+                    <NavLinkBubble to="/about" label="Method" active={location.pathname === '/about'} />
                 </nav>
             </div>
         </header>
@@ -24,7 +26,6 @@ const Header = () => {
 const NavLinkBubble = ({ to, label, active }) => (
     <Link to={to} className={`nav-link ${active ? 'active' : ''}`}>
         {label}
-        {active && <span className="bubble" />}
     </Link>
 );
 

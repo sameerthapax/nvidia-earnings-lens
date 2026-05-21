@@ -1,6 +1,64 @@
 .insights-panel {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem;
-    background-color: #fafafa;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);}
+  padding: 1.5rem;
+}
+
+.insights-panel__header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: -0.03em;
+}
+
+.insights-panel__sentiment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin: 1.4rem 0;
+}
+
+.signal-card {
+  padding: 1rem;
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.signal-card__label {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.signal-card__value {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 1.25rem;
+  letter-spacing: -0.03em;
+}
+
+.sentiment-text--positive {
+  color: var(--green-ink);
+}
+
+.sentiment-text--neutral {
+  color: var(--yellow-ink);
+}
+
+.sentiment-text--negative {
+  color: var(--red-ink);
+}
+
+.insights-panel__section {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.insights-panel__tone {
+  margin: 0;
+  color: #2f3437;
+}
+
+@media (max-width: 640px) {
+  .insights-panel__sentiment-grid {
+    grid-template-columns: 1fr;
+  }
+}

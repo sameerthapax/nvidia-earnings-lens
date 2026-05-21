@@ -1,51 +1,56 @@
-// src/pages/About.jsx
 import React from 'react';
 import '../styles/About.css';
 
 const About = () => {
     return (
         <div className="about-page">
-            <h1>About NVIDIA Earnings AI</h1>
-            <p>
-                NVIDIA Earnings AI is an AI-powered research tool that analyzes NVIDIA’s earnings call transcripts across multiple quarters.
-                It provides fast, deep insights for investors, researchers, and analysts using natural language processing and vector search.
-            </p>
+            <section className="about-hero reveal">
+                <p className="section-kicker">Method</p>
+                <h1>How the research workflow is assembled</h1>
+                <p className="about-intro">
+                    NVIDIA Earnings Lens turns raw earnings call transcripts into a compact research surface for investors,
+                    analysts, and operators tracking AI infrastructure demand.
+                </p>
+            </section>
 
-            <h2>📌 Key Features</h2>
-            <ul>
-                <li>🔍 Automatic transcript parsing and multi-part summarization</li>
-                <li>📈 Sentiment analysis on both prepared remarks and Q&A sessions</li>
-                <li>📊 Tone change tracking across quarter to detect executive mood shifts</li>
-                <li>🧠 Strategic focus extraction using large language models</li>
-                <li>💬 Interactive Chatbox for asking questions about any quarter's transcript</li>
-                <li>🔎 Vector search powered by OpenAI embeddings for accurate context retrieval</li>
-            </ul>
+            <section className="about-grid">
+                <article className="about-card reveal">
+                    <p className="section-kicker">What it does</p>
+                    <h2>Core functions</h2>
+                    <ul>
+                        <li>Parses and stores quarterly earnings call transcripts.</li>
+                        <li>Scores tone across management remarks and the Q&amp;A portion separately.</li>
+                        <li>Extracts recurring business themes for faster quarter-over-quarter comparison.</li>
+                        <li>Supports direct questioning against transcript context through retrieval-based chat.</li>
+                    </ul>
+                </article>
 
-            <h2>🛠️ Tech Stack</h2>
-            <ul>
-                <li>React + Vite for frontend UI</li>
-                <li>Firebase Firestore for data storage</li>
-                <li>OpenAI GPT-4 & Embeddings API for NLP and chat</li>
-                <li>Chart.js for visualization of sentiment trends</li>
-                <li>Transcript retrival from -(https://tickertrends.io/transcripts/)</li>
-                <li>Vercel for deployment.</li>
-            </ul>
+                <article className="about-card reveal">
+                    <p className="section-kicker">Stack</p>
+                    <h2>System choices</h2>
+                    <ul>
+                        <li>React and Vite for the application shell.</li>
+                        <li>Firebase Firestore for transcript and analysis storage.</li>
+                        <li>Chart.js for longitudinal sentiment visuals.</li>
+                        <li>OpenAI models for transcript analysis, embeddings, and chat responses.</li>
+                        <li>TickerTrends as the upstream transcript source.</li>
+                    </ul>
+                </article>
 
-            <h2>🧠 AI Capabilities</h2>
-            <ul>
-                <li>Chunk-wise transcript embedding using <code>text-embedding-3-small</code></li>
-                <li>Cosine similarity search to retrieve relevant context for chat queries</li>
-                <li>GPT-4 used for summarizing chunks and answering user queries</li>
-                <li>Fine-tuned prompt engineering to extract consistent structured insights</li>
-            </ul>
+                <article className="about-card reveal">
+                    <p className="section-kicker">AI layer</p>
+                    <h2>Model responsibilities</h2>
+                    <ul>
+                        <li>Chunk-level embeddings support semantic retrieval.</li>
+                        <li>Quarter summaries create structured sentiment, tone, and theme fields.</li>
+                        <li>Chat answers are grounded in retrieved transcript passages rather than free-form recall.</li>
+                    </ul>
+                </article>
 
-            <h2>📂 Data Pipeline</h2>
-            <p>
-                1. Raw transcripts  are scraped from tickertrends.<br />
-                2. Safely stored in firestore the with analyze button, is set for analysis for the transcript.<br />
-                3. Transcripts are chunked, summarized, embedded, and stored in Firestore under:
-            </p>
-            <pre>
+                <article className="about-card reveal">
+                    <p className="section-kicker">Data flow</p>
+                    <h2>Storage shape</h2>
+                    <pre>
 analyzedData/
   └── Q1-2026/
         ├── sentiment
@@ -54,13 +59,9 @@ analyzedData/
         └── chunks/
               ├── chunk0
               ├── chunk1
-            </pre>
-
-            <h2>🚀 Goal</h2>
-            <p>
-                The goal is to simplify the analysis of earnings reports by surfacing executive tone, sentiment, and strategy
-                without requiring users to read entire transcripts.
-            </p>
+                    </pre>
+                </article>
+            </section>
         </div>
     );
 };

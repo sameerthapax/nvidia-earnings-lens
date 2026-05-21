@@ -1,35 +1,181 @@
 .home-page {
-    padding: 2rem 1rem;
-    background-color: #f9fafc;
-    min-height: 100vh;
-    font-family: 'Segoe UI', sans-serif;
+  display: grid;
+  gap: 2rem;
+}
+
+.home-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.9fr);
+  gap: 1.5rem;
+  padding: 2rem 0 0.5rem;
+}
+
+.home-hero__copy {
+  max-width: 52rem;
 }
 
 .dashboard-title {
-    text-align: center;
-    font-size: 2.4rem;
-    margin-bottom: 3rem;
-    color: #333;
+  margin: 0;
+  font-family: "Newsreader", "Iowan Old Style", serif;
+  font-size: clamp(3.2rem, 7vw, 5.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  font-weight: 600;
 }
 
-.chart-container {
-    max-width: 900px;
-    margin: 0 auto 3rem auto;
-    background: #fff;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+.home-hero__intro {
+  max-width: 40rem;
+  margin: 1.3rem 0 0;
+  color: var(--muted);
+  font-size: 1.08rem;
 }
 
+.home-hero__aside {
+  display: grid;
+  gap: 0.9rem;
+  align-self: end;
+}
+
+.hero-stat-card,
+.overview-card,
+.quarter-card,
+.insights-panel,
+.chatbox,
+.analyze-wrapper,
+.about-card,
+.quarter-details__status-card,
+.transcript-viewer {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.hero-stat-card {
+  padding: 1.1rem 1.2rem;
+}
+
+.hero-stat-card__label {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--muted);
+  font-family: "Geist Mono", "SF Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero-stat-card strong {
+  font-size: 1.55rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.overview-card {
+  grid-column: span 4;
+  padding: 1.5rem;
+}
+
+.overview-card--wide {
+  grid-column: span 8;
+}
+
+.overview-card__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.overview-card h2,
 .section-title {
-    font-size: 1.5rem;
-    margin: 2rem 0 1rem 1rem;
-    color: #444;
+  margin: 0;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+}
+
+.overview-card__body-copy,
+.section-caption {
+  margin: 0;
+  color: var(--muted);
+}
+
+.chart-note {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.chart-frame {
+  height: 320px;
+}
+
+.mini-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 1.6rem 0 0;
+}
+
+.mini-metrics div {
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border);
+}
+
+.mini-metrics dt {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.mini-metrics dd {
+  margin: 0.3rem 0 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.quarter-section {
+  padding: 1rem 0 0;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .quarter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 980px) {
+  .home-hero,
+  .section-heading {
+    grid-template-columns: 1fr;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    padding: 0 1rem 2rem 1rem;
+  }
+
+  .overview-card,
+  .overview-card--wide {
+    grid-column: span 12;
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard-title {
+    font-size: clamp(2.65rem, 11vw, 4rem);
+  }
+
+  .chart-frame {
+    height: 260px;
+  }
 }

@@ -3,8 +3,9 @@ import '../styles/FocusThemes.css';
 const FocusThemes = ({ themes }) => {
     return (
         <div className="focus-themes">
-            <h3>Strategic Focuses</h3>
-            <ul>
+            <p className="panel-kicker">Focus themes</p>
+            <h3>Recurring strategic topics</h3>
+            <ul className="focus-themes__list">
                 {themes.map((theme, index) => (
                     <li key={index} className="theme-tag">{theme}</li>
                 ))}

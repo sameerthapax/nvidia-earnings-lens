@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import TranscriptViewer from '../components/TranscriptViewer';
@@ -44,19 +44,35 @@ const QuarterDetails = () => {
     }, [id]);
 
     if (loading) {
-        return <p className="loading">Loading quarter details...</p>;
+        return <p className="loading-state">Loading quarter details…</p>;
     }
 
     return (
         <div className="quarter-details">
-            <h1>Quarter: {id}</h1>
+            <section className="quarter-details__hero reveal">
+                <div>
+                    <Link className="back-link" to="/">Back to quarter library</Link>
+                    <p className="section-kicker">Quarter dossier</p>
+                    <h1>{id}</h1>
+                    <p className="quarter-details__intro">
+                        Review the full transcript, inspect the structured reading, and query the call directly.
+                    </p>
+                </div>
+                <div className="quarter-details__status-card">
+                    <span className={`quarter-details__status ${analysis ? 'is-ready' : 'is-pending'}`}>
+                        {analysis ? 'Analysis available' : 'Analysis pending'}
+                    </span>
+                    <p>Transcript source is stored in Firestore and rendered in a line-by-line reading view.</p>
+                </div>
+            </section>
 
             <div className="details-layout">
                 <div className="transcript-column">
-                    <TranscriptViewer transcript={transcript} />
-                    <div className="chat-box">
-                        <ChatBox quarter={id} />
+                    <div className="section-heading reveal">
+                        <p className="panel-kicker">Primary source</p>
+                        <h2>Transcript</h2>
                     </div>
+                    <TranscriptViewer transcript={transcript} />
                 </div>
 
                 <div className="insights-column">
@@ -67,11 +83,10 @@ const QuarterDetails = () => {
                             themes={analysis.themes}
                         />
                     ) : (
-                        <>
                         <AnalyzeButton quarterId={id} onComplete={fetchData} />
-                        <p>No analysis available for this quarter.</p>
-                        </>
                     )}
+
+                    <ChatBox quarter={id} />
                 </div>
             </div>
         </div>

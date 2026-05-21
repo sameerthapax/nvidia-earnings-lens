@@ -1,9 +1,25 @@
 .app-footer {
-    background-color: #111827;
-    color: white;
-    text-align: center;
-    padding: 1rem 2rem;
-    font-size: 0.9rem;
-    margin-top: 3rem;
-    border-radius: 30px;
+  padding: 0 0 2rem;
+}
+
+.app-footer__inner {
+  width: var(--content-width);
+  margin: 0 auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.app-footer__inner p {
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .app-footer__inner {
+    flex-direction: column;
+  }
 }

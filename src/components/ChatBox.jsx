@@ -1,6 +1,5 @@
-// components/ChatBox.jsx
 import React, { useState } from 'react';
-import '../styles/ChatBox.css'; // optional styles
+import '../styles/ChatBox.css';
 
 const ChatBox = ({ quarter }) => {
     const [input, setInput] = useState('');
@@ -23,36 +22,54 @@ const ChatBox = ({ quarter }) => {
             const json = await res.json();
             setMessages(prev => [...prev, { sender: 'ai', text: json.answer }]);
         } catch (err) {
-            setMessages(prev => [...prev, { sender: 'ai', text: '❌ Failed to get response.' }]);
+            setMessages(prev => [...prev, { sender: 'ai', text: 'The response could not be generated. Try again in a moment.' }]);
         } finally {
             setLoading(false);
         }
     };
 
     const handleKeyDown = (e) => {
-        if (e.key === 'Enter') sendMessage();
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
     };
 
     return (
-        <div className="chatbox">
+        <section className="chatbox reveal">
+            <div className="chatbox__header">
+                <div>
+                    <p className="panel-kicker">Transcript chat</p>
+                    <h2>Ask the call a direct question</h2>
+                </div>
+                <p className="chatbox__hint">
+                    Submit with <kbd>Enter</kbd> and use <kbd>Shift</kbd> + <kbd>Enter</kbd> for a new line.
+                </p>
+            </div>
             <div className="chat-history">
+                {messages.length === 0 && (
+                    <div className="chatbox__empty">
+                        Ask about guidance, demand signals, AI infrastructure commentary, margin pressure, or customer mix.
+                    </div>
+                )}
                 {messages.map((msg, idx) => (
                     <div key={idx} className={`message ${msg.sender}`}>
                         {msg.text}
                     </div>
                 ))}
-                {loading && <div className="message ai">Typing...</div>}
+                {loading && <div className="message ai">Drafting answer…</div>}
             </div>
             <div className="chat-input">
-                <input
+                <textarea
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    placeholder="Ask something about this quarter..."
+                    placeholder="What changed in management tone compared with the prior quarter?"
+                    rows={3}
                 />
                 <button onClick={sendMessage} disabled={loading || !input.trim()}>Send</button>
             </div>
-        </div>
+        </section>
     );
 };
 

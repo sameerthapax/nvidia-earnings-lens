@@ -1,13 +1,25 @@
 .focus-themes {
-    margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  margin-top: 1.2rem;
+}
+
+.focus-themes h3 {
+  margin: 0 0 0.95rem;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+}
+
+.focus-themes__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 .theme-tag {
-    display: inline-block;
-    background-color: #e5f3ff;
-    color: #0366d6;
-    padding: 0.4rem 0.8rem;
-    margin: 0.3rem;
-    border-radius: 16px;
-    font-size: 0.9rem;
+  background: var(--blue-bg);
+  color: var(--blue-ink);
 }
